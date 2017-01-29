@@ -18,6 +18,16 @@ class UsersController < ApplicationController
     @items = @user.items.group('items.id')
   end
 
+  def have
+      @user = User.find(params[:id])
+      @haves = @user.have.order(created_at: :desc)
+  end
+  
+   def want
+      @user = User.find(params[:id])
+      @wants = @user.want.order(created_at: :desc)
+  end
+
   private
   def set_user
     @user = User.find(params[:id])
